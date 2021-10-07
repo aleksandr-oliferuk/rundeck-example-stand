@@ -1,0 +1,21 @@
+---
+- name: Download repo setup script
+  get_url:
+    url: "https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh"
+    dest: "/tmp/rundeck-repo-setup.sh"
+    mode: "0777"
+
+- name: Launch repo setup script
+  command: "/tmp/rundeck-repo-setup.sh rundeck"
+
+- name: Install Rundeck
+  yum:
+    name: rundeck
+
+# - name: Configure Rundeck
+
+- name: Start and Enable Rundeck systemd unit
+  systemd:
+    state: started
+    enabled: yes
+    name: rundeckd
