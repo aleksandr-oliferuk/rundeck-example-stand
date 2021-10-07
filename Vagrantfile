@@ -14,8 +14,8 @@ MACHINES = {
         :cpus => 4,
         :ip_addr => '10.100.100.101'
   },
-  :ubuntu => {
-        :box_name => "ubuntu/focal64",
+  :freebsd => {
+        :box_name => "freebsd/FreeBSD-13.0-STABLE",
         :memory => 4096,
         :cpus => 4,
         :ip_addr => '10.100.100.102'
@@ -23,6 +23,13 @@ MACHINES = {
 }
 
 Vagrant.configure("2") do |config|
+
+  config.vm.define "rundeck" do |rundeck|
+    rundeck.vm.network "forwarded_port", guest: 4440, host: 4440
+    rundeck.vm.provision "ansible" do |ansible|
+      ansible.playbook = "playbook.yml"
+    end
+  end
 
   MACHINES.each do |boxname, boxconfig|
 
@@ -40,20 +47,13 @@ Vagrant.configure("2") do |config|
             vb.cpus = boxconfig[:cpus]
           end
           
-          box.vm.provision "shell", inline: <<-SHELL
-            localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
-            sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
-            systemctl restart sshd
-          SHELL
+          # box.vm.provision "shell", inline: <<-SHELL
+          #   localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
+          #   sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
+          #   systemctl restart sshd
+          # SHELL
 
       end
 
-  end
-
-  config.vm.define "rundeck" do |rundeck|
-    rundeck.vm.network "forwarded_port", guest: 4440, host: 4440
-    rundeck.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbook.yml"
-    end
   end
 end

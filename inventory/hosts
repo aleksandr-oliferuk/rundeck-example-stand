@@ -1,2 +1,2 @@
 [rundeck]
-rundeck  ansible_host="127.0.0.1" ansible_port=222
+rundeck  ansible_host="10.100.100.100"
