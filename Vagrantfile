@@ -46,6 +46,12 @@ Vagrant.configure("2") do |config|
             vb.memory = boxconfig[:memory]
             vb.cpus = boxconfig[:cpus]
           end
+
+          box.vm.provision "shell", inline: <<-SHELL
+          sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
+          service sshd restart
+          cat /vagrant/hosts >> /etc/hosts
+          SHELL
       end
   end
 end
