@@ -9,3 +9,7 @@
 * vagrant==2.2.18
 * ansible==2.9.6
 * vagrant plugin vbguest
+
+# Запуск
+```vagrant up```
+В браузере - *http://127.0.0.1:4440*, login/pass - *admin/admin*
