@@ -12,8 +12,6 @@
   yum:
     name: rundeck
 
-# - name: Configure Rundeck
-
 - name: Start and Enable Rundeck systemd unit
   systemd:
     state: started

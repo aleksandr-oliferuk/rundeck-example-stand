@@ -3,5 +3,5 @@
   vars_files:
     - defaults/main.yml
   roles:
-    - role: java
-    - role: rundeck
+    - role: roles/java
+    - role: roles/rundeck
