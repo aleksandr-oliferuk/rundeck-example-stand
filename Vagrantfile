@@ -9,7 +9,7 @@ MACHINES = {
         :ip_addr => '10.100.100.100'
   },
   :debian => {
-        :box_name => "debian/stretch64",
+        :box_name => "debian/buster64",
         :memory => 4096,
         :cpus => 4,
         :ip_addr => '10.100.100.101'
