@@ -15,6 +15,6 @@
 
 В браузере - *http://127.0.0.1:4440*, login/pass - *admin/admin*
 
-[Обмен ключами SSH](https://www.opennet.ru/man.shtml?topic=ssh-copy-id&category=1&russian=0) между rundeck'ом и другими нодами произведён на этапе разворотки стенда.
+[Обмен ключами SSH](https://www.opennet.ru/man.shtml?topic=ssh-copy-id&category=1&russian=0) между rundeck'ом и другими нодами произведён на этапе разворотки стенда
 
 Для настройки проекта можноиспользовать файлы описания нод отсюда - */var/lib/rundeck/nodes*
