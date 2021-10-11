@@ -8,7 +8,7 @@
 * virtualbox==6.1.26
 * vagrant==2.2.18
 * ansible==2.9.6
-* vagrant plugin vbguest
+* vagrant plugin vbguest - ```vagrant plugin install vagrant-vbguest```
 
 # Запуск
 ```vagrant up```
