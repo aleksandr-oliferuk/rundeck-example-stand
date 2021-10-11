@@ -17,4 +17,4 @@
 
 [Обмен ключами SSH](https://www.opennet.ru/man.shtml?topic=ssh-copy-id&category=1&russian=0) между rundeck'ом и другими нодами произведён на этапе разворотки стенда
 
-Файлы описания нод уже добавлены на хост rundeck и находятся здесь - */var/lib/rundeck/nodes*
+Файлы описания нод уже добавлены на хост **rundeck** и находятся здесь - */var/lib/rundeck/nodes*
