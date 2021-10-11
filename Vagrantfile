@@ -29,6 +29,14 @@ Vagrant.configure("2") do |config|
     rundeck.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
     end
+
+    rundeck.vm.provision "shell", inline: <<-SHELL
+      cat /vagrant/id_rsa > /var/lib/rundeck/.ssh/id_rsa
+      cat /vagrant/id_rsa.pub > /var/lib/rundeck/.ssh/id_rsa.pub
+      cat /vagrant/rundeck_ssh_config > /var/lib/rundeck/.ssh/config
+      chown rundeck:rundeck /var/lib/rundeck/.ssh/config
+      chmod 0400 /var/lib/rundeck/.ssh/config
+    SHELL
   end
 
   MACHINES.each do |boxname, boxconfig|
@@ -48,9 +56,10 @@ Vagrant.configure("2") do |config|
           end
 
           box.vm.provision "shell", inline: <<-SHELL
-          sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
-          service sshd restart
-          cat /vagrant/hosts >> /etc/hosts
+            cat /vagrant/hosts >> /etc/hosts
+            cat /vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+            sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
+            service sshd restart
           SHELL
       end
   end
