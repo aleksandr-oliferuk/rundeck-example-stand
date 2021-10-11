@@ -1,0 +1,7 @@
+Debian:
+  description: Debian sample host
+  nodename: debian
+  hostname: debian
+  osArch: amd64
+  osName: Debian Buster
+  username: vagrant
