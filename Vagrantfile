@@ -44,6 +44,23 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
+  config.vm.define "debian" do |debian|
+    debian.vm.provision "shell", inline: <<-SHELL
+      apt update
+      apt -y install nfs-common
+    SHELL
+  end
+
+  config.vm.define "freebsd" do |freebsd|
+    freebsd.vm.provision "shell", inline: <<-SHELL
+      mkdir /nfs_data
+      chown vagrant:vagrant /nfs_data
+      cat /vagrant/freebsd_nfs_rc.conf >> /etc/rc.conf
+      cp /vagrant/freebsd_exports /etc/exports
+      mountd -r
+    SHELL
+  end
+
   MACHINES.each do |boxname, boxconfig|
 
     config.vm.define boxname do |box|
@@ -63,7 +80,7 @@ Vagrant.configure("2") do |config|
           cat /vagrant/hosts >> /etc/hosts
           cat /vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
           sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
-          service sshd restart
+          reboot
         SHELL
     end
   end
