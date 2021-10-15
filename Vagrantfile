@@ -33,8 +33,8 @@ Vagrant.configure("2") do |config|
     end
 
     rundeck.vm.provision "shell", inline: <<-SHELL
-      cat /vagrant/id_rsa > #$rundeck_home/.ssh/id_rsa
-      cat /vagrant/id_rsa.pub > #$rundeck_home/.ssh/id_rsa.pub
+      cat /vagrant/rundeck_id_rsa > #$rundeck_home/.ssh/id_rsa
+      cat /vagrant/rundeck_id_rsa.pub > #$rundeck_home/.ssh/id_rsa.pub
       cat /vagrant/rundeck_ssh_config > #$rundeck_home/.ssh/config
       chown rundeck:rundeck #$rundeck_home/.ssh/config
       chmod 0400 #$rundeck_home/.ssh/config
@@ -78,10 +78,15 @@ Vagrant.configure("2") do |config|
 
         box.vm.provision "shell", inline: <<-SHELL
           cat /vagrant/hosts >> /etc/hosts
-          cat /vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
-          sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
-          reboot
+          cat /vagrant/rundeck_id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
         SHELL
     end
   end
+
+  config.vm.define "freebsd" do |freebsd|
+    freebsd.vm.provision "shell", inline: <<-SHELL
+      reboot
+    SHELL
+  end
+
 end
