@@ -33,6 +33,7 @@ Vagrant.configure("2") do |config|
     end
 
     rundeck.vm.provision "shell", inline: <<-SHELL
+      timedatectl set-timezone Europe/Moscow
       cat /vagrant/rundeck_id_rsa > #$rundeck_home/.ssh/id_rsa
       cat /vagrant/rundeck_id_rsa.pub > #$rundeck_home/.ssh/id_rsa.pub
       cat /vagrant/rundeck_ssh_config > #$rundeck_home/.ssh/config
@@ -46,14 +47,20 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "debian" do |debian|
     debian.vm.provision "shell", inline: <<-SHELL
+      timedatectl set-timezone Europe/Moscow
       apt update
       apt -y install nfs-common
+      mkdir /testdir
+      chown vagrant:vagrant /testdir
     SHELL
   end
 
   config.vm.define "freebsd" do |freebsd|
     freebsd.vm.provision "shell", inline: <<-SHELL
+      cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
       mkdir /nfs_data
+      chown vagrant:vagrant /nfs_data
+      mkdir /backups
       chown vagrant:vagrant /nfs_data
       cat /vagrant/freebsd_nfs_rc.conf >> /etc/rc.conf
       cp /vagrant/freebsd_exports /etc/exports

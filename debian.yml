@@ -1,6 +1,6 @@
 Debian:
   description: Debian sample host
-  nodename: debian
+  nodename: linux
   hostname: debian
   osArch: amd64
   osName: Debian Buster

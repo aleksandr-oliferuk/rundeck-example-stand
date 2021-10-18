@@ -1,6 +1,6 @@
 FreeBSD:
   description: FreeBSD sample host
-  nodename: freebsd
+  nodename: unix
   hostname: freebsd
   osArch: amd64
   osName: FreeBSD-13.0
