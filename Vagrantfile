@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
       mkdir /nfs_data
       chown vagrant:vagrant /nfs_data
       mkdir /backups
-      chown vagrant:vagrant /nfs_data
+      chown vagrant:vagrant /backups
       cat /vagrant/freebsd_nfs_rc.conf >> /etc/rc.conf
       cp /vagrant/freebsd_exports /etc/exports
       mountd -r
