@@ -8,7 +8,7 @@
 - name: Launch repo setup script
   command: "/tmp/rundeck-repo-setup.sh rundeck"
 
-- name: Install Rundeck and Java 11
+- name: Install Rundeck and Java
   yum:
     name: "{{ rundeck_packages }}"
 

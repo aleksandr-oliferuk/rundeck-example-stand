@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vim: set ft=ruby :
 
+# Set VMs properties: hostnames, memory, CPU and IP addresses
 MACHINES = {
   :rundeck => {
         :box_name => "centos/7",
@@ -24,16 +25,18 @@ MACHINES = {
 
 $rundeck_home = "/var/lib/rundeck"
 
+# Provision VMs
 Vagrant.configure("2") do |config|
 
   config.vm.define "rundeck" do |rundeck|
     rundeck.vm.network "forwarded_port", guest: 4440, host: 4440
+
     rundeck.vm.provision "ansible" do |ansible|
       ansible.playbook = "./ansible/playbook.yml"
     end
 
     rundeck.vm.provision "shell", inline: <<-SHELL
-      timedatectl set-timezone Europe/Moscow
+      timedatectl set-timezone Europe/Moscow 
       cat /vagrant/rundeck_id_rsa > #$rundeck_home/.ssh/id_rsa
       cat /vagrant/rundeck_id_rsa.pub > #$rundeck_home/.ssh/id_rsa.pub
       cat /vagrant/rundeck_ssh_config > #$rundeck_home/.ssh/config
