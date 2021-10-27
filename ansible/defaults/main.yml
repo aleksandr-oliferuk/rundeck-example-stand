@@ -1,9 +1,3 @@
-java_type: jre
-java_release_version: 11
-java_release: latest
-openjdk_impl: hotspot
-host_os: linux
-host_arch: x64
-java_home_directory: /opt/java
-java_environment_update: yes
-openjdk_api_url: "https://api.adoptopenjdk.net/v2/info/releases/openjdk{{ java_release_version }}?os={{ host_os }}&architecture={{ host_arch }}&binary_type={{ java_type }}&openjdk_impl={{ openjdk_impl }}&release={{ java_release }}"
+rundeck_packages:
+  - java-11-openjdk
+  - rundeck

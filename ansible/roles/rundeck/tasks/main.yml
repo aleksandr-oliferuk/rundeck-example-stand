@@ -8,9 +8,9 @@
 - name: Launch repo setup script
   command: "/tmp/rundeck-repo-setup.sh rundeck"
 
-- name: Install Rundeck
+- name: Install Rundeck and Java 11
   yum:
-    name: rundeck
+    name: "{{ rundeck_packages }}"
 
 - name: Start and Enable Rundeck systemd unit
   systemd:
