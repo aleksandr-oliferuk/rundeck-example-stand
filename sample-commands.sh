@@ -9,5 +9,5 @@ sudo ls $BACKUP_DIR
 sudo umount /mnt
 
 #!/usr/local/bin/bash
-tar -czvf /backups/`date "+%d_%m_%Y-%H:%M"`.tar.gz /nfs_data
+tar -czvf /backups/`date "+%d_%m_%Y-%H:%M:%S"`.tar.gz /nfs_data
 rm  -rf /nfs_data/*
