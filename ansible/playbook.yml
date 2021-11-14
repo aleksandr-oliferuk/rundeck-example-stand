@@ -1,6 +1,4 @@
 - hosts: rundeck
   become: yes
-  vars_files:
-    - defaults/main.yml
   roles:
     - role: roles/rundeck

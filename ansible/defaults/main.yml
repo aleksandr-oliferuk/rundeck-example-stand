@@ -1,3 +1,0 @@
-rundeck_packages:
-  - java-11-openjdk
-  - rundeck

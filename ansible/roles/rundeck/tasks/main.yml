@@ -10,7 +10,9 @@
 
 - name: Install Rundeck and Java
   yum:
-    name: "{{ rundeck_packages }}"
+    name:
+      - java-11-openjdk
+      - rundeck
 
 - name: Start and Enable Rundeck systemd unit
   systemd:
