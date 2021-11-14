@@ -17,4 +17,4 @@
 
 [Обмен ключами SSH](https://www.opennet.ru/man.shtml?topic=ssh-copy-id&category=1&russian=0) между rundeck'ом и другими нодами произведён на этапе разворотки стенда
 
-Файл описания нод [nodes](nodes.yml) уже добавлен на хост **rundeck** и находится здесь - */var/lib/rundeck/nodes.yml*
+Файл описания нод ([nodes.yml](nodes.yml)) уже добавлен на хост **rundeck** и находится здесь - */var/lib/rundeck/nodes.yml*
