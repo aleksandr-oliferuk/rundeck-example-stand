@@ -42,9 +42,8 @@ Vagrant.configure("2") do |config|
       cat /vagrant/rundeck_ssh_config > #$rundeck_home/.ssh/config
       chown rundeck:rundeck #$rundeck_home/.ssh/config
       chmod 0400 #$rundeck_home/.ssh/config
-      mkdir #$rundeck_home/nodes
-      cp /vagrant/*.yml #$rundeck_home/nodes/
-      chown -R rundeck:rundeck #$rundeck_home/nodes
+      cp /vagrant/nodes.yml #$rundeck_home/.
+      chown rundeck:rundeck #$rundeck_home/nodes.yml
     SHELL
   end
 

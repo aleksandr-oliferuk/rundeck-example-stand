@@ -1,7 +1,9 @@
+Debian:
+  description: Debian sample host
+  hostname: debian
+  username: vagrant
+
 FreeBSD:
   description: FreeBSD sample host
-  nodename: unix
   hostname: freebsd
-  osArch: amd64
-  osName: FreeBSD-13.0
   username: vagrant
