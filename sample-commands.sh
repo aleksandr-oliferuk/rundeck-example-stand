@@ -17,3 +17,7 @@ rm  -rf /nfs_data/*
 watch ls /testdir
 gnu-watch -x ls /nfs_data
 gnu-watch -x ls /backups
+
+
+# Github link
+https://github.com/aleksandr-oliferuk/rundeck-example-stand
