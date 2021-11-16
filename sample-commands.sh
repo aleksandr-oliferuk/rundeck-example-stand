@@ -11,3 +11,9 @@ sudo umount /mnt
 #!/usr/local/bin/bash
 tar -czvf /backups/`date "+%d_%m_%Y-%H:%M:%S"`.tar.gz /nfs_data
 rm  -rf /nfs_data/*
+
+
+# List directory in the loop
+watch ls /testdir
+gnu-watch -x ls /nfs_data
+gnu-watch -x ls /backups

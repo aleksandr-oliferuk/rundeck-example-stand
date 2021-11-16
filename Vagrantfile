@@ -67,6 +67,7 @@ Vagrant.configure("2") do |config|
       cat /vagrant/freebsd_nfs_rc.conf >> /etc/rc.conf
       cp /vagrant/freebsd_exports /etc/exports
       mountd -r
+      pkg install -y -q gnu-watch
     SHELL
   end
 
