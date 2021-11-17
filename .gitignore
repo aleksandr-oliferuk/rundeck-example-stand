@@ -3,3 +3,4 @@ speech
 *.log
 *.pptx
 *.txt
+.~lock*
